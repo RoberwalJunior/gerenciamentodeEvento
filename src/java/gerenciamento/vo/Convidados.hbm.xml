@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/10/2019 16:53:42 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="gerenciamento.vo.Convidados" table="convidados" catalog="gerenciamentodb" optimistic-lock="version">
+        <id name="idConvidado" type="java.lang.Integer">
+            <column name="id_convidado" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="evento" class="gerenciamento.vo.Evento" fetch="select">
+            <column name="evento_id" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" />
+        </property>
+        <property name="cpf" type="string">
+            <column name="cpf" length="50" />
+        </property>
+        <property name="levantamento" type="string">
+            <column name="levantamento" />
+        </property>
+    </class>
+</hibernate-mapping>
