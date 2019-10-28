@@ -26,7 +26,7 @@
             <forward name="failure" path="/loginUsuario.jsp"/>
         </action>
         <action input="/gerenciamentoDeEventos.jsp" name="InserirEventoActionBean" path="/inserirEvento" scope="request" type="gerenciamento.action.InserirEventoAction">
-            <forward name="success" path="/gerenciamentoDeConvidados.jsp"/>
+            <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
         </action>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>

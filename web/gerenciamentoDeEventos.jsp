@@ -15,7 +15,36 @@
         <title>Gerenciamento de Eventos</title>
     </head>
     <body>
-        <h1>Bem vindo de volta <bean:write name="LoginUsuarioActionForm" property="login"/>!</h1>
+
+        <logic:notPresent name="InserirEventoActionBean">
+            <logic:redirect action="inserirEvento"/>
+        </logic:notPresent>
+
+        <table border="1">
+            <tr>
+                <th>ID do Evento</th>
+                <th>Tipo de Evento</th>
+                <th>Proprietário</th>
+                <th>Data do Evento</th>
+            </tr>
+
+
+            <logic:present name="InserirEventoActionBean">
+                <logic:iterate name="InserirEventoActionBean" property="eventos" id="evento">
+
+                    <tr>
+                        <td><bean:write name="evento" property="idEvento"/></td>
+                        <td><bean:write name="evento" property="tipoEvento"/></td>
+                        <td><bean:write name="evento" property="proprietario"/></td>
+                        <td><bean:write name="evento" property="dataEvento"/></td>
+                        <td>Alterar</td>
+                        <td>Excluir</td>
+                    </tr>
+
+                </logic:iterate>
+            </logic:present>
+
+        </table>
 
         <h1>Novo Evento</h1>
 

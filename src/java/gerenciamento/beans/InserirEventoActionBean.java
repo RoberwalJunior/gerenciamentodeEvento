@@ -5,8 +5,11 @@
  */
 package gerenciamento.beans;
 
+import gerenciamento.dao.HibernateEventoDAO;
+import gerenciamento.vo.Evento;
 import gerenciamento.vo.Usuario;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +29,8 @@ public class InserirEventoActionBean extends org.apache.struts.action.ActionForm
     private String proprietario;
     private String dataEvento;
     private Set convidadoses = new HashSet(0);
+    
+    private List<Evento> eventos;
 
    
     
@@ -115,5 +120,14 @@ public class InserirEventoActionBean extends org.apache.struts.action.ActionForm
         tipoEvento = "";
         proprietario = "";
         dataEvento = "";
+        eventos = null;
+    }
+
+    public List<Evento> getEventos() {
+        return new HibernateEventoDAO().retrieveAll();
+    }
+
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
     }
 }
