@@ -21,7 +21,7 @@
     </global-forwards>
 
     <action-mappings>
-        <action input="/loginUsuario.jsp" name="LoginUsuarioActionForm" path="/loginUsuario" scope="request" type="gerenciamento.action.LoginUsuarioAction">
+        <action input="/loginUsuario.jsp" name="LoginUsuarioActionForm" path="/loginUsuario" scope="session" type="gerenciamento.action.LoginUsuarioAction">
             <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
             <forward name="failure" path="/loginUsuario.jsp"/>
         </action>

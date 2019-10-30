@@ -38,7 +38,8 @@ public class InserirEventoAction extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         InserirEventoActionBean formBean = (InserirEventoActionBean) form;
-        Evento evento = new Evento(0, formBean.getTipoEvento(), formBean.getProprietario(), formBean.getDataEvento());
+        System.out.println("ID USER LOGADO: " + formBean.getUsuario().getId());
+        Evento evento = new Evento(formBean.getUsuario().getId(), formBean.getTipoEvento(), formBean.getProprietario(), formBean.getDataEvento());
         HibernateEventoDAO aux = new HibernateEventoDAO();
         aux.create(evento);
         return mapping.findForward(SUCCESS);
