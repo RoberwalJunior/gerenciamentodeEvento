@@ -5,7 +5,7 @@
  */
 package gerenciamento.action;
 
-import gerenciamento.beans.LoginUsuarioActionForm;
+import gerenciamento.beans.LoginInserirEventoActionForm;
 import gerenciamento.vo.Usuario;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -38,12 +38,13 @@ public class LoginUsuarioAction extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        LoginUsuarioActionForm formBean = (LoginUsuarioActionForm) form;
+        LoginInserirEventoActionForm formBean = (LoginInserirEventoActionForm) form;
         String login = formBean.getLogin();
         String senha = formBean.getSenha();
         List<Usuario> usuarios = formBean.getUsuarios();
         for (Usuario aux : usuarios) {
             if(aux.getLogin().equals(login) && aux.getSenha().equals(senha)){
+                formBean.setIdUsuario(aux.getId());
                 return mapping.findForward(SUCCESS);
             }
         }

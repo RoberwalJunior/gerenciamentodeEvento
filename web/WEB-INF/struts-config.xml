@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="LoginInserirEventoActionForm" type="gerenciamento.beans.LoginInserirEventoActionForm"/>
         <form-bean name="InserirEventoActionBean" type="gerenciamento.beans.InserirEventoActionBean"/>
         <form-bean name="LoginUsuarioActionForm" type="gerenciamento.beans.LoginUsuarioActionForm"/>
     
@@ -21,11 +22,11 @@
     </global-forwards>
 
     <action-mappings>
-        <action input="/loginUsuario.jsp" name="LoginUsuarioActionForm" path="/loginUsuario" scope="session" type="gerenciamento.action.LoginUsuarioAction">
+        <action input="/loginUsuario.jsp" name="LoginInserirEventoActionForm" path="/loginUsuario" scope="session" type="gerenciamento.action.LoginUsuarioAction">
             <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
             <forward name="failure" path="/loginUsuario.jsp"/>
         </action>
-        <action input="/gerenciamentoDeEventos.jsp" name="InserirEventoActionBean" path="/inserirEvento" scope="request" type="gerenciamento.action.InserirEventoAction">
+        <action input="/gerenciamentoDeEventos.jsp" name="LoginInserirEventoActionForm" path="/inserirEvento" scope="session" type="gerenciamento.action.InserirEventoAction">
             <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
         </action>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>

@@ -27,11 +27,11 @@
                 <tbody>
                     <tr>
                         <td>Login: </td>
-                        <td><html:text name="LoginUsuarioActionForm" property="login"/></td>
+                        <td><html:text name="LoginInserirEventoActionForm" property="login"/></td>
                     </tr>
                     <tr>
                         <td>Password: </td>
-                        <td><html:password name="LoginUsuarioActionForm" property="senha"/></td>
+                        <td><html:password name="LoginInserirEventoActionForm" property="senha"/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><html:submit value="Login" /></td>

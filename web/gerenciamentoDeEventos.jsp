@@ -16,9 +16,13 @@
     </head>
     <body>
 
-        <logic:notPresent name="InserirEventoActionBean">
+        <logic:notPresent name="LoginInserirEventoActionForm">
             <logic:redirect action="inserirEvento"/>
         </logic:notPresent>
+
+
+
+
 
         <table border="1">
             <tr>
@@ -29,8 +33,8 @@
             </tr>
 
 
-            <logic:present name="InserirEventoActionBean">
-                <logic:iterate name="InserirEventoActionBean" property="eventos" id="evento">
+            <logic:present name="LoginInserirEventoActionForm">
+                <logic:iterate name="LoginInserirEventoActionForm" property="eventos" id="evento">
 
                     <tr>
                         <td><bean:write name="evento" property="idEvento"/></td>
@@ -46,6 +50,9 @@
 
         </table>
 
+
+
+
         <h1>Novo Evento</h1>
 
         <html:form action="inserirEvento">
@@ -53,22 +60,21 @@
             <table border="0">
                 <tr>
                     <td>Tipo de evento: </td>
-                    <td><html:text name="InserirEventoActionBean" property="tipoEvento"/></td>
+                    <td><html:text name="LoginInserirEventoActionForm" property="tipoEvento"/></td>
                 </tr>
                 <tr>
                     <td>Proprietario: </td>
-                    <td><html:text name="InserirEventoActionBean" property="proprietario"/></td>
+                    <td><html:text name="LoginInserirEventoActionForm" property="proprietario"/></td>
                 </tr>
                 <tr>
                     <td>Data do evento: </td>
-                    <td><html:text name="InserirEventoActionBean" property="dataEvento"/></td>
+                    <td><html:text name="LoginInserirEventoActionForm" property="dataEvento"/></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><html:submit value="Enviar" /></td>
+                    <td colspan="2"><html:submit value="Enviar"/></td>
                 </tr>
 
             </table>
-                sjsjsjs
 
         </html:form>
         <html:errors/>

@@ -5,9 +5,11 @@
  */
 package gerenciamento.action;
 
-import gerenciamento.beans.InserirEventoActionBean;
+import gerenciamento.beans.LoginInserirEventoActionForm;
 import gerenciamento.dao.HibernateEventoDAO;
 import gerenciamento.vo.Evento;
+import gerenciamento.vo.Usuario;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -37,11 +39,18 @@ public class InserirEventoAction extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        InserirEventoActionBean formBean = (InserirEventoActionBean) form;
-        System.out.println("ID USER LOGADO: " + formBean.getUsuario().getId());
-        Evento evento = new Evento(formBean.getUsuario().getId(), formBean.getTipoEvento(), formBean.getProprietario(), formBean.getDataEvento());
+        LoginInserirEventoActionForm formBean = (LoginInserirEventoActionForm) form;
+        Usuario usuario = new Usuario();
+        List<Usuario> usuarios = formBean.getUsuarios();
+        for (Usuario us :usuarios) {
+            if(us.getId().equals(formBean.getIdUsuario())){
+                usuario = us;
+            }
+        }
+        Evento evento = new Evento(usuario, formBean.getTipoEvento(), formBean.getProprietario(), formBean.getDataEvento());
         HibernateEventoDAO aux = new HibernateEventoDAO();
         aux.create(evento);
+        formBean.reset(mapping, request);
         return mapping.findForward(SUCCESS);
     }
 }

@@ -6,39 +6,47 @@
 package gerenciamento.beans;
 
 import gerenciamento.dao.HibernateEventoDAO;
+import gerenciamento.dao.HibernateUsuarioDAO;
 import gerenciamento.vo.Evento;
 import gerenciamento.vo.Usuario;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 /**
  *
  * @author Roberwal Junior
  */
-public class InserirEventoActionBean extends org.apache.struts.action.ActionForm {
+public class LoginInserirEventoActionForm extends org.apache.struts.action.ActionForm {
     
     private Integer idEvento;
-    private Usuario usuario;
     private String tipoEvento;
     private String proprietario;
     private String dataEvento;
-    private Set convidadoses = new HashSet(0);
-    
     private List<Evento> eventos;
-
-   
     
+    private Integer idUsuario;
+    private String login;
+    private String senha;
+    private List<Usuario> usuarios;
+
+    
+    @Override
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        tipoEvento = "";
+        proprietario = "";
+        dataEvento = "";
+        eventos = null;
+        login = "";
+        senha = "";
+    }
     
     /**
      *
      */
-    public InserirEventoActionBean() {
+    public LoginInserirEventoActionForm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,20 +58,13 @@ public class InserirEventoActionBean extends org.apache.struts.action.ActionForm
      * @param request The HTTP Request we are processing.
      * @return
      */
+    @Override
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
-        if (getTipoEvento()== null || getTipoEvento().equals("")) {
-            errors.add("tipoEvento", new ActionMessage("error.tipoEvento.required"));
+        //if (getName() == null || getName().length() < 1) {
+        //    errors.add("name", new ActionMessage("error.name.required"));
             // TODO: add 'error.name.required' key to your resources
-        }
-        if (getProprietario()== null || getProprietario().equals("")) {
-            errors.add("proprietario", new ActionMessage("error.proprietario.required"));
-            // TODO: add 'error.name.required' key to your resources
-        }
-        if (getDataEvento()== null || getDataEvento().equals("")) {
-            errors.add("dataEvento", new ActionMessage("error.dataEvento.required"));
-            // TODO: add 'error.name.required' key to your resources
-        }
+        //}
         return errors;
     }
 
@@ -73,14 +74,6 @@ public class InserirEventoActionBean extends org.apache.struts.action.ActionForm
 
     public void setIdEvento(Integer idEvento) {
         this.idEvento = idEvento;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public String getTipoEvento() {
@@ -107,22 +100,6 @@ public class InserirEventoActionBean extends org.apache.struts.action.ActionForm
         this.dataEvento = dataEvento;
     }
 
-    public Set getConvidadoses() {
-        return convidadoses;
-    }
-
-    public void setConvidadoses(Set convidadoses) {
-        this.convidadoses = convidadoses;
-    }
-    
-    @Override
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-        tipoEvento = "";
-        proprietario = "";
-        dataEvento = "";
-        eventos = null;
-    }
-
     public List<Evento> getEventos() {
         return new HibernateEventoDAO().retrieveAll();
     }
@@ -130,4 +107,38 @@ public class InserirEventoActionBean extends org.apache.struts.action.ActionForm
     public void setEventos(List<Evento> eventos) {
         this.eventos = eventos;
     }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public List<Usuario> getUsuarios() throws Exception {
+        return new HibernateUsuarioDAO().retrieveAll();
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+    
+    
 }
