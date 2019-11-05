@@ -25,9 +25,9 @@ public class HibernateEventoDAO {
         session.close();
     }
     
-    public List<Evento> retrieveAll() {
+    public List<Evento> retrieveAll(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Evento> produtos = session.createQuery("from Evento").list();
+        List<Evento> produtos = session.createQuery("from Evento where id_usuario =" + id).list();
         session.flush();
         session.close();
         return produtos;
@@ -35,7 +35,7 @@ public class HibernateEventoDAO {
     
     public Evento retrieveById(int idEvento) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Evento evento = (Evento) session.createQuery("from Evento where id=" + idEvento).uniqueResult();
+        Evento evento = (Evento) session.createQuery("from Evento where id_evento=" + idEvento).uniqueResult();
         session.flush();
         session.close();
         return evento;

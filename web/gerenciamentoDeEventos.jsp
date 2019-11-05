@@ -43,6 +43,7 @@
                         <td><bean:write name="evento" property="dataEvento"/></td>
                         <td>Alterar</td>
                         <td>Excluir</td>
+                        <td><html:link action="">Adicionar convidados</html:link></td>
                     </tr>
 
                 </logic:iterate>
