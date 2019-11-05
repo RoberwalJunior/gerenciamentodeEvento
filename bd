@@ -1,0 +1,27 @@
+CREATE DATABASE gerenciamentodb;
+USE gerenciamentodb;
+CREATE TABLE usuario (
+ id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+ login VARCHAR(20) NULL,
+ senha VARCHAR(40) NULL,
+ PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE evento (
+ id_evento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+ id_usuario INTEGER UNSIGNED NOT NULL,
+ tipo_evento VARCHAR(255) NULL,
+ proprietario VARCHAR(255) NULL,
+ dataEvento varchar(10) NULL,
+ PRIMARY KEY(id_evento),
+ FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE convidados (
+ id_convidado INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+ evento_id INTEGER UNSIGNED NOT NULL,
+ nome VARCHAR(255) NULL,
+ cpf VARCHAR(50) NULL,
+ levantamento VARCHAR(255) NULL,
+ PRIMARY KEY(id_convidado),
+ FOREIGN KEY (evento_id) REFERENCES evento(id_evento)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
