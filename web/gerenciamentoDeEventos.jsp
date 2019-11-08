@@ -41,8 +41,8 @@
                         <td><bean:write name="evento" property="tipoEvento"/></td>
                         <td><bean:write name="evento" property="proprietario"/></td>
                         <td><bean:write name="evento" property="dataEvento"/></td>
-                        <td>Alterar</td>
-                        <td>Excluir</td>
+                        <td><html:link action="alterarEvento" paramName="evento" paramProperty="idEvento" paramId="idEvento">Alterar</html:link>Alterar</td>
+                        <td><html:link action="excluirEvento" paramName="evento" paramProperty="idEvento" paramId="idEvento">Exluir</html:link></td>
                         <td><html:link action="">Adicionar convidados</html:link></td>
                     </tr>
 
