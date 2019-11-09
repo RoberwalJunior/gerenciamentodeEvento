@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="AlterarEventoBean" type="gerenciamento.beans.AlterarEventoBean"/>
         <form-bean name="ExcluirEventoBean" type="gerenciamento.beans.ExcluirEventoBean"/>
         <form-bean name="LoginInserirEventoActionForm" type="gerenciamento.beans.LoginInserirEventoActionForm"/>
         <form-bean name="InserirEventoActionBean" type="gerenciamento.beans.InserirEventoActionBean"/>
@@ -31,6 +32,12 @@
             <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
         </action>
         <action input="/" name="ExcluirEventoBean" path="/excluirEvento" scope="request" type="gerenciamento.action.ExcluirEventoAction" validate="false">
+            <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
+        </action>
+        <action input="/" name="AlterarEventoBean" path="/encAlterarEvento" scope="session" type="gerenciamento.action.EncAlterarEventoAction" validate="false">
+            <forward name="success" path="/alteraEvento.jsp"/>
+        </action>
+        <action input="/alteraEvento.jsp" name="AlterarEventoBean" path="/alterarEvento" scope="session" type="gerenciamento.action.AlterarEventoAction">
             <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
         </action>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
