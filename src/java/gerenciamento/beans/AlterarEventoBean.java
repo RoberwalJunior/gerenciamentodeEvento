@@ -5,22 +5,25 @@
  */
 package gerenciamento.beans;
 
+import gerenciamento.dao.HibernateUsuarioDAO;
+import gerenciamento.vo.Usuario;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 /**
  *
  * @author Roberwal Junior
  */
 public class AlterarEventoBean extends org.apache.struts.action.ActionForm {
-    
+
+    private Integer id;
     private Integer idEvento;
-     private String tipoEvento;
-     private String proprietario;
-     private String dataEvento;
+    private String tipoEvento;
+    private String proprietario;
+    private String dataEvento;
 
     public AlterarEventoBean() {
         super();
@@ -74,7 +77,19 @@ public class AlterarEventoBean extends org.apache.struts.action.ActionForm {
     public void setDataEvento(String dataEvento) {
         this.dataEvento = dataEvento;
     }
+
+    public Integer getIdUsuario() {
+        return id;
+    }
+
+    public void setIdUsuario(Integer id) {
+        this.id = id;
+    }
     
+    public List<Usuario> getUsuarios() throws Exception {
+        return new HibernateUsuarioDAO().retrieveAll();
+    }
+
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         idEvento = null;

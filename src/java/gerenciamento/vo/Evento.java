@@ -36,7 +36,13 @@ public class Evento  implements java.io.Serializable {
         this.dataEvento = dataEvento;
     }
     
-    
+    public Evento(Usuario usuario, Integer idEvento, String tipoEvento, String proprietario, String dataEvento) {
+        this.usuario = usuario;
+        this.idEvento = idEvento;
+        this.tipoEvento = tipoEvento;
+        this.proprietario = proprietario;
+        this.dataEvento = dataEvento;
+    }
     
     public Evento(Usuario usuario, String tipoEvento, String proprietario, String dataEvento, Set convidadoses) {
        this.usuario = usuario;

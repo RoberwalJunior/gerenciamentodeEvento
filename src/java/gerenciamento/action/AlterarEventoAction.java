@@ -8,6 +8,8 @@ package gerenciamento.action;
 import gerenciamento.beans.AlterarEventoBean;
 import gerenciamento.dao.HibernateEventoDAO;
 import gerenciamento.vo.Evento;
+import gerenciamento.vo.Usuario;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -38,7 +40,14 @@ public class AlterarEventoAction extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         AlterarEventoBean formBean = (AlterarEventoBean) form;
-        Evento evento = new Evento(formBean.getIdEvento(), formBean.getTipoEvento(), formBean.getProprietario(), formBean.getDataEvento());
+        Usuario usuario = new Usuario();
+        List<Usuario> usuarios = formBean.getUsuarios();
+        for (Usuario us :usuarios) {
+            if(us.getId().equals(formBean.getIdUsuario())){
+                usuario = us;
+            }
+        }
+        Evento evento = new Evento(usuario, formBean.getIdEvento(), formBean.getTipoEvento(), formBean.getProprietario(), formBean.getDataEvento());
         HibernateEventoDAO aux = new HibernateEventoDAO();
         aux.update(evento);
         

@@ -8,6 +8,8 @@ package gerenciamento.action;
 import gerenciamento.beans.AlterarEventoBean;
 import gerenciamento.dao.HibernateEventoDAO;
 import gerenciamento.vo.Evento;
+import gerenciamento.vo.Usuario;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -43,8 +45,7 @@ public class EncAlterarEventoAction extends org.apache.struts.action.Action {
         formBean.setTipoEvento(evento.getTipoEvento());
         formBean.setProprietario(evento.getProprietario());
         formBean.setDataEvento(evento.getDataEvento());
-        
-        
+        formBean.setIdUsuario(evento.getUsuario().getId());
         return mapping.findForward(SUCCESS);
     }
 }

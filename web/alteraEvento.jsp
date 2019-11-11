@@ -18,6 +18,7 @@
         <h1>Alterar Evento</h1>
 
         <html:form action="alterarEvento" >
+            <html:text readonly="true" name="AlterarEventoBean" property="idUsuario"/>
             <html:text readonly="true" name="AlterarEventoBean" property="idEvento"/>
             <html:text name="AlterarEventoBean" property="tipoEvento"/> 
             <html:text name="AlterarEventoBean" property="proprietario"/> 

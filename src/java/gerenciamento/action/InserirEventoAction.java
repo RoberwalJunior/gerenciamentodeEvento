@@ -50,6 +50,7 @@ public class InserirEventoAction extends org.apache.struts.action.Action {
         Evento evento = new Evento(usuario, formBean.getTipoEvento(), formBean.getProprietario(), formBean.getDataEvento());
         HibernateEventoDAO aux = new HibernateEventoDAO();
         aux.create(evento);
+        formBean.setIdUsuario(usuario.getId());
         formBean.reset(mapping, request);
         return mapping.findForward(SUCCESS);
     }

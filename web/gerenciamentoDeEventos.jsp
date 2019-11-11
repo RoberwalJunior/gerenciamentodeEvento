@@ -61,6 +61,10 @@
 
             <table border="0">
                 <tr>
+                    <td>Usuário:</td>
+                    <td><html:text name="LoginInserirEventoActionForm" property="idUsuario"/></td>
+                </tr>
+                <tr>
                     <td>Tipo de evento: </td>
                     <td><html:text name="LoginInserirEventoActionForm" property="tipoEvento"/></td>
                 </tr>
