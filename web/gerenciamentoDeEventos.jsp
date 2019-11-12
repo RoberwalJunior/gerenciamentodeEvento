@@ -24,7 +24,7 @@
 
 
         <h1>Gerenciamento de eventos</h1>
-        <h2>Listagem de evntos</h2>
+        <h2>Listagem de eventos</h2>
         <table border="1">
             <tr>
                 <th>ID do Evento</th>
@@ -44,7 +44,7 @@
                         <td><bean:write name="evento" property="dataEvento"/></td>
                         <td><html:link action="encAlterarEvento" paramName="evento" paramProperty="idEvento" paramId="idEvento">Alterar</html:link></td>
                         <td><html:link action="excluirEvento" paramName="evento" paramProperty="idEvento" paramId="idEvento">Exluir</html:link></td>
-                        <td><html:link action="">Adicionar convidados</html:link></td>
+                        <td><html:link action="encAddConvidados" paramName="evento" paramProperty="idEvento" paramId="idEvento">Adicionar convidados</html:link></td>
                     </tr>
 
                 </logic:iterate>
