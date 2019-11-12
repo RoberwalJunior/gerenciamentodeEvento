@@ -49,7 +49,7 @@ public class EncInserirConvidados extends org.apache.struts.action.Action {
                 aux = e;
             }
         }
-        formBean.setNomeProprietario(aux.getProprietario());
+        formBean.setProprietario(aux.getProprietario());
         formBean.setEvento(aux);
         return mapping.findForward(SUCCESS);
     }

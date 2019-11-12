@@ -24,13 +24,16 @@
 
 
         <h1>Gerenciamento de Convidados</h1>
+        Proprietário do evento: <bean:write name="InserirConvidadosBean" property="proprietario"/>
+        
+        
         <h2>Listagem de convidados</h2>
         <table border="1">
             <tr>
-                <th>ID do Evento</th>
-                <th>Tipo de Evento</th>
-                <th>Proprietário</th>
-                <th>Data do Evento</th>
+                <th>ID do Covidado</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>O que vai levar</th>
             </tr>
 
 

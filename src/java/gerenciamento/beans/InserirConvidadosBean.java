@@ -28,7 +28,16 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
     private String nome;
     private String cpf;
     private String levantamento;
+    
     private String proprietario;
+
+    public String getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
+    }
     
     private List<Convidados> convidados;
 
@@ -122,13 +131,5 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
 
     public void setConvidados(List<Convidados> convidados) {
         this.convidados = convidados;
-    }
-
-    public String getNomeProprietario() {
-        return proprietario;
-    }
-
-    public void setNomeProprietario(String nomeProprietario) {
-        this.proprietario = nomeProprietario;
     }
 }
