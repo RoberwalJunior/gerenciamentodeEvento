@@ -9,7 +9,9 @@ import gerenciamento.beans.InserirConvidadosBean;
 import gerenciamento.dao.HibernateEventoDAO;
 import gerenciamento.vo.Convidados;
 import gerenciamento.vo.Evento;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -40,8 +42,6 @@ public class EncInserirConvidados extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         InserirConvidadosBean formBean = (InserirConvidadosBean) form;
-        HibernateEventoDAO evento = new HibernateEventoDAO();
-        List<Convidados> convidados = formBean.getConvidados();
         List<Evento> ev = formBean.getEventos(formBean.getIdEvento());
         Evento aux = new Evento();
         for (Evento e : ev) {
@@ -49,7 +49,12 @@ public class EncInserirConvidados extends org.apache.struts.action.Action {
                 aux = e;
             }
         }
-        formBean.setProprietario(aux.getProprietario());
+        HibernateEventoDAO dao = new HibernateEventoDAO();
+        Evento evento = dao.retrieveById(formBean.getIdEvento());
+        Set<Convidados> convidados = evento.getConvidadoses();
+        List<Convidados> convids = new ArrayList<>(convidados);
+        formBean.setConvidados(convids);
+        formBean.setProprietario(evento.getProprietario());
         formBean.setEvento(aux);
         return mapping.findForward(SUCCESS);
     }

@@ -5,6 +5,7 @@
  */
 package gerenciamento.dao;
 
+import gerenciamento.util.HibernateSession;
 import gerenciamento.util.HibernateUtil;
 import gerenciamento.vo.Usuario;
 import java.util.List;
@@ -16,10 +17,9 @@ import org.hibernate.Session;
  */
 public class HibernateUsuarioDAO {
     public List<Usuario> retrieveAll() throws Exception {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+       Session session = HibernateSession.getInstance().getSession();
         List<Usuario> usuario = session.createQuery("from Usuario").list();
         session.flush();
-        session.close();
         return usuario;
     }
 }

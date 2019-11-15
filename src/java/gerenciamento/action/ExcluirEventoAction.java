@@ -6,8 +6,10 @@
 package gerenciamento.action;
 
 import gerenciamento.beans.ExcluirEventoBean;
+import gerenciamento.beans.LoginInserirEventoActionForm;
 import gerenciamento.dao.HibernateEventoDAO;
 import gerenciamento.vo.Evento;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,10 +41,21 @@ public class ExcluirEventoAction extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         ExcluirEventoBean formBean = (ExcluirEventoBean) form;
-        Evento evento = new Evento(formBean.getIdEvento());
+        List<Evento> ev = formBean.getEventos();
+//        Evento evento = new Evento();
+//        for (Evento e : ev) {
+//            if (e.getIdEvento().equals(formBean.getIdEvento())) {
+//                evento = e;
+//            }
+//        }
+        LoginInserirEventoActionForm login = (LoginInserirEventoActionForm) request.getSession().getAttribute("LoginInserirEventoActionForm");
+       // login.setEventos(new ArrayList<>());
+        //ev.remove(evento);
+        //Evento evento = new Evento(formBean.getIdEvento());
         HibernateEventoDAO aux = new HibernateEventoDAO();
+        Evento evento = aux.retrieveById(formBean.getIdEvento());
         aux.delete(evento);
-        
+        login.getEventos();
         return mapping.findForward(SUCCESS);
     }
 

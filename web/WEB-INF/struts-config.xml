@@ -41,7 +41,7 @@
         <action input="/alteraEvento.jsp" name="AlterarEventoBean" path="/alterarEvento" scope="session" type="gerenciamento.action.AlterarEventoAction">
             <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
         </action>
-        <action input="/" name="InserirConvidadosBean" path="/encAddConvidados" scope="session" type="gerenciamento.action.EncInserirConvidados" validate="false">
+        <action input="/gerenciamentoDeEventos.jsp" name="InserirConvidadosBean" path="/encAddConvidados" scope="session" type="gerenciamento.action.EncInserirConvidados" validate="false">
             <forward name="success" path="/gerenciamentoDeConvidados.jsp"/>
         </action>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
