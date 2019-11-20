@@ -18,11 +18,10 @@
         <h1>Alterar Evento</h1>
 
         <html:form action="alterarEvento" >
-            <html:text readonly="true" name="AlterarEventoBean" property="idUsuario"/>
-            <html:text readonly="true" name="AlterarEventoBean" property="idEvento"/>
-            <html:text name="AlterarEventoBean" property="tipoEvento"/> 
-            <html:text name="AlterarEventoBean" property="proprietario"/> 
-            <html:text name="AlterarEventoBean" property="dataEvento"/>
+            Id do Evento: <html:text readonly="true" name="AlterarEventoBean" property="idEvento"/><br>
+            Nome do Evento: <html:text name="AlterarEventoBean" property="tipoEvento"/> <br>
+            Proprietário do Evento: <html:text name="AlterarEventoBean" property="proprietario"/> <br>
+            Data do Evento: <html:text name="AlterarEventoBean" property="dataEvento"/><br>
             <html:submit value="Alterar"/>
         </html:form>
         <html:errors/>

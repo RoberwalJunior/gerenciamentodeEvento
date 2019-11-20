@@ -6,7 +6,6 @@
 package gerenciamento.dao;
 
 import gerenciamento.util.HibernateSession;
-import gerenciamento.util.HibernateUtil;
 import gerenciamento.vo.Evento;
 import java.util.List;
 import org.hibernate.Session;

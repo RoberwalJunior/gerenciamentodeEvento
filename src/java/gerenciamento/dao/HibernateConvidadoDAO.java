@@ -33,6 +33,13 @@ public class HibernateConvidadoDAO {
         session.flush();
         return convidado;
     }
+    
+    public List<Convidados> retrieveAllById(int idEvento) {
+       Session session = HibernateSession.getInstance().getSession();
+        List<Convidados> convidado = session.createQuery("from Convidados where evento_id= " + idEvento).list();
+        session.flush();
+        return convidado;
+    }
 
     public void delete(Convidados convidado) {
         Session session = HibernateSession.getInstance().getSession();

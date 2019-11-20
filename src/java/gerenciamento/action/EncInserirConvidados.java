@@ -54,7 +54,7 @@ public class EncInserirConvidados extends org.apache.struts.action.Action {
         Set<Convidados> convidados = evento.getConvidadoses();
         List<Convidados> convids = new ArrayList<>(convidados);
         formBean.setConvidados(convids);
-        formBean.setProprietario(evento.getProprietario());
+        formBean.setNomeEvento(evento.getTipoEvento());
         formBean.setEvento(aux);
         return mapping.findForward(SUCCESS);
     }

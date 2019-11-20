@@ -29,15 +29,17 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
     private String cpf;
     private String levantamento;
     
-    private String proprietario;
+    private String nomeEvento;
 
-    public String getProprietario() {
-        return proprietario;
+    public String getNomeEvento() {
+        return nomeEvento;
     }
 
-    public void setProprietario(String proprietario) {
-        this.proprietario = proprietario;
+    public void setNomeEvento(String nomeEvento) {
+        this.nomeEvento = nomeEvento;
     }
+
+    
     
     private List<Convidados> convidados;
 
@@ -81,7 +83,7 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
         this.idUsuario = idUsuario;
     }
 
-    public Evento getEvento() {
+    public Evento getEvento() {//aqui
         return evento;
     }
 
@@ -126,7 +128,7 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
     }
 
     public List<Convidados> getConvidados() {
-        return new HibernateConvidadoDAO().retrieveAll();
+        return new HibernateConvidadoDAO().retrieveAllById(getIdEvento());
     }
 
     public void setConvidados(List<Convidados> convidados) {

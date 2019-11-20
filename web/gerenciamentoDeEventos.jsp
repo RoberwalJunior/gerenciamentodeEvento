@@ -15,6 +15,8 @@
         <title>Gerenciamento de Eventos</title>
     </head>
     <body>
+        
+        <html:link action="logoutLogin">Logout</html:link>
 
         <logic:notPresent name="LoginInserirEventoActionForm">
             <logic:redirect action="inserirEvento"/>
@@ -23,12 +25,12 @@
 
 
 
-        <h1>Gerenciamento de eventos</h1>
+            <h1>Bem vindo de volta <bean:write name="LoginInserirEventoActionForm" property="login"/>!</h1>
         <h2>Listagem de eventos</h2>
         <table border="1">
             <tr>
                 <th>ID do Evento</th>
-                <th>Tipo de Evento</th>
+                <th>Nome de Evento</th>
                 <th>Proprietário</th>
                 <th>Data do Evento</th>
             </tr>
@@ -61,11 +63,7 @@
 
             <table border="0">
                 <tr>
-                    <td>Usuário:</td>
-                    <td><html:text name="LoginInserirEventoActionForm" property="idUsuario"/></td>
-                </tr>
-                <tr>
-                    <td>Tipo de evento: </td>
+                    <td>Nome de evento: </td>
                     <td><html:text name="LoginInserirEventoActionForm" property="tipoEvento"/></td>
                 </tr>
                 <tr>

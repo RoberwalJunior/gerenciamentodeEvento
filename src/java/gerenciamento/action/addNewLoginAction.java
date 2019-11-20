@@ -5,12 +5,9 @@
  */
 package gerenciamento.action;
 
-import gerenciamento.beans.ExcluirEventoBean;
-import gerenciamento.beans.LoginInserirEventoActionForm;
-import gerenciamento.dao.HibernateEventoDAO;
-import gerenciamento.vo.Evento;
-import java.util.ArrayList;
-import java.util.List;
+import gerenciamento.beans.addNewLoginBean;
+import gerenciamento.dao.HibernateUsuarioDAO;
+import gerenciamento.vo.Usuario;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -21,7 +18,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author Roberwal Junior
  */
-public class ExcluirEventoAction extends org.apache.struts.action.Action {
+public class addNewLoginAction extends org.apache.struts.action.Action {
 
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
@@ -40,22 +37,10 @@ public class ExcluirEventoAction extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        ExcluirEventoBean formBean = (ExcluirEventoBean) form;
-//        Evento evento = new Evento();
-//        for (Evento e : ev) {
-//            if (e.getIdEvento().equals(formBean.getIdEvento())) {
-//                evento = e;
-//            }
-//        }
-        LoginInserirEventoActionForm login = (LoginInserirEventoActionForm) request.getSession().getAttribute("LoginInserirEventoActionForm");
-       // login.setEventos(new ArrayList<>());
-        //ev.remove(evento);
-        //Evento evento = new Evento(formBean.getIdEvento());
-        HibernateEventoDAO aux = new HibernateEventoDAO();
-        Evento evento = aux.retrieveById(formBean.getIdEvento());
-        aux.delete(evento);
-        login.getEventos();
+        addNewLoginBean formBean = (addNewLoginBean) form;
+        Usuario usuario = new Usuario(formBean.getLogin(), formBean.getConfSenha(), null);
+        HibernateUsuarioDAO aux = new HibernateUsuarioDAO();
+        aux.create(usuario);
         return mapping.findForward(SUCCESS);
     }
-
 }

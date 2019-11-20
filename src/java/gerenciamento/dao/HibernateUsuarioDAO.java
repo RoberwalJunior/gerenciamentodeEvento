@@ -6,16 +6,25 @@
 package gerenciamento.dao;
 
 import gerenciamento.util.HibernateSession;
-import gerenciamento.util.HibernateUtil;
 import gerenciamento.vo.Usuario;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author Roberwal Junior
  */
 public class HibernateUsuarioDAO {
+    
+    public void create(Usuario usuario) {
+        Session session = HibernateSession.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(usuario);
+        session.flush();
+        transaction.commit();
+    }
+    
     public List<Usuario> retrieveAll() throws Exception {
        Session session = HibernateSession.getInstance().getSession();
         List<Usuario> usuario = session.createQuery("from Usuario").list();

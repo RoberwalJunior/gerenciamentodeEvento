@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="addNewLoginBean" type="gerenciamento.beans.addNewLoginBean"/>
         <form-bean name="InserirConvidadosBean" type="gerenciamento.beans.InserirConvidadosBean"/>
         <form-bean name="AlterarEventoBean" type="gerenciamento.beans.AlterarEventoBean"/>
         <form-bean name="ExcluirEventoBean" type="gerenciamento.beans.ExcluirEventoBean"/>
@@ -42,6 +43,21 @@
             <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
         </action>
         <action input="/gerenciamentoDeEventos.jsp" name="InserirConvidadosBean" path="/encAddConvidados" scope="session" type="gerenciamento.action.EncInserirConvidados" validate="false">
+            <forward name="success" path="/gerenciamentoDeConvidados.jsp"/>
+        </action>
+        <action name="addNewLoginBean" path="/encAddLogin" scope="session" type="gerenciamento.action.encAddLoginAction" validate="false">
+            <forward name="success" path="/cadastroNovoLogin.jsp"/>
+        </action>
+        <action input="/cadastroNovoLogin.jsp" name="addNewLoginBean" path="/addNewLogin" scope="request" type="gerenciamento.action.addNewLoginAction">
+            <forward name="success" path="/loginUsuario.jsp"/>
+        </action>
+        <action path="/logoutLogin" type="gerenciamento.action.logoutLogin">
+            <forward name="success" path="/loginUsuario.jsp"/>
+        </action>
+        <action path="/voltarEvento" type="gerenciamento.action.voltarEventoAction">
+            <forward name="success" path="/gerenciamentoDeEventos.jsp"/>
+        </action>
+        <action input="/gerenciamentoDeConvidados.jsp" name="InserirConvidadosBean" path="/inserirConvidados" scope="request" type="gerenciamento.action.addConvidadosAction">
             <forward name="success" path="/gerenciamentoDeConvidados.jsp"/>
         </action>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>

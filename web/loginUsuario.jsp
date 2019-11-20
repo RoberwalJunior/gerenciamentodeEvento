@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>login</title>
+        <title>login - Gerenciamentos de Eventos</title>
         <style>
             body{
                 font-family: monospace;
@@ -15,7 +15,7 @@
             body table{
                  font-size: 27px
             }
-            bory h1{
+            body h1{
                  font-size: 40px
             }
         </style>
@@ -34,7 +34,8 @@
                         <td><html:password name="LoginInserirEventoActionForm" property="senha"/></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><html:submit value="Login" /></td>
+                        <td><html:submit value="Login" /></td>
+                        <td><html:link action="encAddLogin">Novo Cadastro</html:link></td>
                     </tr>
                 </tbody>
             </table>    

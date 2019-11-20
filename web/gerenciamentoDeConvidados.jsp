@@ -22,9 +22,9 @@
 
 
 
-
+        <html:link action="voltarEvento">Voltar</html:link>
         <h1>Gerenciamento de Convidados</h1>
-        Proprietário do evento: <bean:write name="InserirConvidadosBean" property="proprietario"/>
+        <h2>Evento: </h2><span><bean:write name="InserirConvidadosBean" property="nomeEvento"/></span>
         
         
         <h2>Listagem de convidados</h2>
@@ -52,6 +52,30 @@
             </logic:present>
 
         </table>
+        
+        
+        <h2>Novo Convidado</h2>
+        <html:form action="inserirConvidados">
+            <table border="0">
+                <tr>
+                    <td>Nome do Convidado: </td>
+                    <td><html:text name="InserirConvidadosBean" property="nome"/></td>
+                </tr>
+                <tr>
+                    <td>CPF: </td>
+                    <td><html:text name="InserirConvidadosBean" property="cpf"/></td>
+                </tr>
+                <tr>
+                    <td>O que vai levar: </td>
+                    <td><html:text name="InserirConvidadosBean" property="levantamento"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><html:submit value="Enviar"/></td>
+                </tr>
+
+            </table>
+        </html:form>
+        <html:errors/>
         
     </body>
 </html>
