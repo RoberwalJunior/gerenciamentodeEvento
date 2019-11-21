@@ -40,7 +40,15 @@ public class addConvidadosAction extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         InserirConvidadosBean formBean = (InserirConvidadosBean) form;
-        Convidados convidados = new Convidados(formBean.getEvento(), formBean.getNome(), formBean.getCpf(), formBean.getLevantamento());
+        Evento evento = new Evento();
+        List<Evento> eventos = formBean.getEventos(formBean.getIdEvento());
+        for (Evento ev : eventos) {
+            if(ev.getIdEvento().equals(formBean.getIdEvento())){
+                evento = ev;
+            }
+        }
+        
+        Convidados convidados = new Convidados(evento, formBean.getNome(), formBean.getCpf(), formBean.getLevantamento());
         HibernateConvidadoDAO aux = new HibernateConvidadoDAO();
         aux.create(convidados);
         return mapping.findForward(SUCCESS);

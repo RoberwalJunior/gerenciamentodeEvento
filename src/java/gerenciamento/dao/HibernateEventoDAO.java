@@ -17,7 +17,7 @@ import org.hibernate.Transaction;
  */
 public class HibernateEventoDAO {
 
-    public void create(Evento evento) {
+    public void create(Evento evento) throws Exception{
         Session session = HibernateSession.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.save(evento);
@@ -25,21 +25,21 @@ public class HibernateEventoDAO {
         transaction.commit();
     }
 
-    public List<Evento> retrieveAll(int id) {
+    public List<Evento> retrieveAll(int id) throws Exception{
         Session session = HibernateSession.getInstance().getSession();
         List<Evento> produtos = session.createQuery("from Evento where id_usuario =" + id).list();
         session.flush();
         return produtos;
     }
 
-    public Evento retrieveById(int idEvento) {
+    public Evento retrieveById(int idEvento) throws Exception{
         Session session = HibernateSession.getInstance().getSession();
         Evento evento = (Evento) session.createQuery("from Evento where id_evento=" + idEvento).uniqueResult();
         session.flush();
         return evento;
     }
 
-    public void delete(Evento evento) {
+    public void delete(Evento evento) throws Exception{
         Session session = HibernateSession.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.delete(evento);
@@ -47,7 +47,7 @@ public class HibernateEventoDAO {
         transaction.commit();
     }
 
-    public void update(Evento evento) {
+    public void update(Evento evento) throws Exception{
         Session session = HibernateSession.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.update(evento);

@@ -100,7 +100,7 @@ public class LoginInserirEventoActionForm extends org.apache.struts.action.Actio
         this.dataEvento = dataEvento;
     }
 
-    public List<Evento> getEventos() {
+    public List<Evento> getEventos() throws Exception {
         return new HibernateEventoDAO().retrieveAll(getIdUsuario());
     }
 

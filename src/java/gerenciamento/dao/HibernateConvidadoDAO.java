@@ -18,7 +18,7 @@ import org.hibernate.Transaction;
  */
 public class HibernateConvidadoDAO {
 
-    public void create(Convidados convidado) {
+    public void create(Convidados convidado) throws Exception{
         Session session = HibernateSession.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.save(convidado);
@@ -27,21 +27,21 @@ public class HibernateConvidadoDAO {
 
     }
 
-    public List<Convidados> retrieveAll() {
+    public List<Convidados> retrieveAll() throws Exception{
        Session session = HibernateSession.getInstance().getSession();
         List<Convidados> convidado = session.createQuery("from Convidados").list();
         session.flush();
         return convidado;
     }
     
-    public List<Convidados> retrieveAllById(int idEvento) {
+    public List<Convidados> retrieveAllById(int idEvento) throws Exception{
        Session session = HibernateSession.getInstance().getSession();
         List<Convidados> convidado = session.createQuery("from Convidados where evento_id= " + idEvento).list();
         session.flush();
         return convidado;
     }
 
-    public void delete(Convidados convidado) {
+    public void delete(Convidados convidado) throws Exception{
         Session session = HibernateSession.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.delete(convidado);

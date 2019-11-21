@@ -38,14 +38,14 @@
 
 
             <logic:present name="InserirConvidadosBean">
-                <logic:iterate name="InserirConvidadosBean" property="convidados" id="convidados">
+                <logic:iterate name="InserirConvidadosBean" property="convidados" id="invited">
 
                     <tr>
-                        <td><bean:write name="convidados" property="idConvidado"/></td>
-                        <td><bean:write name="convidados" property="nome"/></td>
-                        <td><bean:write name="convidados" property="cpf"/></td>
-                        <td><bean:write name="convidados" property="levantamento"/></td>
-                        <td><html:link action="excluirConvidados" paramName="convidados" paramProperty="idConvidado" paramId="idConvidado">Exluir</html:link></td>
+                        <td><bean:write name="invited" property="idConvidado"/></td>
+                        <td><bean:write name="invited" property="nome"/></td>
+                        <td><bean:write name="invited" property="cpf"/></td>
+                        <td><bean:write name="invited" property="levantamento"/></td>
+                        <td><html:link action="excluirConvidados" paramName="invited" paramProperty="idConvidado" paramId="idConvidado">Exluir</html:link></td>
                     </tr>
 
                 </logic:iterate>

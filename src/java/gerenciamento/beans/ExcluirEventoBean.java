@@ -52,7 +52,7 @@ public class ExcluirEventoBean extends org.apache.struts.action.ActionForm {
         this.idEvento = idEvento;
     }
 
-    public List<Evento> getEventos() {
+    public List<Evento> getEventos() throws Exception {
         return new HibernateEventoDAO().retrieveAll(idEvento);
     }
 

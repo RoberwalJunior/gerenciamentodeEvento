@@ -17,7 +17,7 @@ import org.hibernate.Transaction;
  */
 public class HibernateUsuarioDAO {
     
-    public void create(Usuario usuario) {
+    public void create(Usuario usuario) throws Exception {
         Session session = HibernateSession.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.save(usuario);

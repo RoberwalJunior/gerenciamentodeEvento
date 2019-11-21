@@ -58,6 +58,7 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
      * @param request The HTTP Request we are processing.
      * @return
      */
+    @Override
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
         /*if (getName() == null || getName().length() < 1) {
@@ -115,7 +116,7 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
         this.levantamento = levantamento;
     }
 
-    public List<Evento> getEventos(int id) {
+    public List<Evento> getEventos(int id) throws Exception {
         return new HibernateEventoDAO().retrieveAll(id);
     }
 
@@ -127,7 +128,7 @@ public class InserirConvidadosBean extends org.apache.struts.action.ActionForm {
         this.idEvento = idEvento;
     }
 
-    public List<Convidados> getConvidados() {
+    public List<Convidados> getConvidados() throws Exception {
         return new HibernateConvidadoDAO().retrieveAllById(getIdEvento());
     }
 
